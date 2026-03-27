@@ -1,0 +1,1255 @@
+/*
+  ====================================================
+  ROTISERÍA LA CAMPESINA — STYLES.CSS
+  Versión:    2.0
+  Descripción: Estilos mobile-first para la landing page
+               Fuentes locales (sin CDN)
+
+  ÍNDICE:
+  1.  @font-face (Local)
+  2.  Variables y Reset
+  3.  Utilidades / Layout
+  4.  Botones
+  5.  Header / Navegación
+  6.  Hero
+  7.  Menú Destacado (Tarjetas)
+  8.  Sección Historia / Tradición
+  9.  Contacto y Ubicación
+  10. Recetas Preview
+  11. Footer
+  12. Botón flotante WhatsApp
+  13. Animaciones fade-in
+  14. Media Queries
+  ====================================================
+*/
+
+
+/* ====================================================
+   1. @FONT-FACE — Fuentes locales (sin Google Fonts CDN)
+   ==================================================== */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/lora-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/lora-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/lora-semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/lora-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/dmsans-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/dmsans-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/dmsans-bold.ttf') format('truetype');
+}
+
+
+/* ====================================================
+   2. VARIABLES Y RESET
+   ==================================================== */
+:root {
+  /* --- Colores principales (cálidos para abrir el apetito) --- */
+  --color-primary:        #8b2f1a;          /* Rojo ladrillo profundo */
+  --color-primary-light:  #c0392b;          /* Rojo ladrillo claro   */
+  --color-secondary:      #d4791c;          /* Naranja dorado rústico */
+  --color-accent:         #b5651d;          /* Marrón cálido         */
+
+  /* --- Fondos y neutros --- */
+  --color-bg:             #faf7f2;          /* Crema suave           */
+  --color-bg-alt:         #f0ebe2;          /* Beige arena           */
+  --color-surface:        #ffffff;          /* Blanco puro (tarjetas) */
+
+  /* --- Texto --- */
+  --color-text:           #2c2218;          /* Marrón muy oscuro     */
+  --color-text-light:     #6b5d4f;          /* Marrón medio          */
+  --color-text-muted:     #9e8e7e;          /* Beige oscuro          */
+
+  /* --- WhatsApp --- */
+  --color-whatsapp:       #25d366;
+  --color-whatsapp-dark:  #128c7e;
+
+  /* --- Bordes, radios y sombras --- */
+  --radius:               12px;
+  --radius-sm:            8px;
+  --shadow-sm:            0 2px 8px  rgba(44, 34, 24, .06);
+  --shadow-md:            0 4px 20px rgba(44, 34, 24, .10);
+  --shadow-lg:            0 8px 40px rgba(44, 34, 24, .14);
+
+  /* --- Transición global --- */
+  --transition:           all .3s ease;
+
+  /* --- Tipografía --- */
+  --font-body:            'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:         'Lora', Georgia, 'Times New Roman', serif;
+
+  /* --- Espaciado de secciones --- */
+  --section-pad:          4rem 0;
+  --container-max:        1200px;
+  --container-px:         1.25rem;
+}
+
+/* Reset moderno */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+ul { list-style: none; }
+
+
+/* ====================================================
+   3. UTILIDADES / LAYOUT
+   ==================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+
+.section {
+  padding: var(--section-pad);
+}
+
+/* Encabezado de sección reutilizable */
+.section__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section__tag {
+  display: inline-block;
+  background-color: rgba(139, 47, 26, .08);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .35rem .9rem;
+  border-radius: 100px;
+  margin-bottom: .75rem;
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: .6rem;
+}
+
+.section__subtitle {
+  font-size: .95rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+
+/* ====================================================
+   4. BOTONES
+   ==================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .75rem 1.5rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .95rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.btn--primary:hover {
+  background-color: #6e2415;
+  border-color: #6e2415;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  border-color: var(--color-whatsapp);
+}
+.btn--whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  border-color: var(--color-whatsapp-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, .40);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .70);
+}
+.btn--outline:hover {
+  background-color: rgba(255, 255, 255, .15);
+  border-color: #fff;
+}
+
+.btn--large {
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+}
+
+.btn--small {
+  padding: .45rem 1.1rem;
+  font-size: .85rem;
+}
+
+
+/* ====================================================
+   5. HEADER / NAVEGACIÓN
+   ==================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .3s ease;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  gap: 1rem;
+}
+
+/* Logo */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.nav__logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-bg-alt);
+}
+
+.nav__logo-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.nav__logo-sub {
+  display: block;
+  font-size: .62rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Botón hamburguesa */
+.nav__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: 6px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* Líneas del hamburguesa al abrirse */
+.nav__toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle.is-active span:nth-child(2) { opacity: 0; }
+.nav__toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menú → cerrado por defecto en mobile */
+.nav__list {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  padding: 1.5rem var(--container-px) 2rem;
+  gap: .25rem;
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+}
+
+.nav__list.is-open { display: flex; }
+
+.nav__link {
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--color-text);
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+
+.nav__link:hover { color: var(--color-primary); }
+
+.nav__call {
+  margin-top: .75rem;
+  width: 100%;
+  justify-content: center;
+}
+
+
+/* ====================================================
+   6. HERO
+   ==================================================== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+
+  /* Usa la foto del local como fondo */
+  background-image: url('fotos/ASI es.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay oscuro cálido sobre la imagen */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(44, 34, 24, .92) 0%,
+    rgba(139, 47, 26, .65) 50%,
+    rgba(44, 34, 24, .85) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding-block: 3rem;
+  max-width: 680px;
+}
+
+.hero__badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .25);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .4rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+  letter-spacing: .02em;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.hero__highlight { color: var(--color-secondary); }
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, .85);
+  margin-bottom: 2rem;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+
+/* ====================================================
+   7. MENÚ DESTACADO (TARJETAS)
+   ==================================================== */
+.menu-section { background-color: var(--color-bg); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.card__img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.card:hover .card__img { transform: scale(1.06); }
+
+.card__badge {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .3rem .7rem;
+  border-radius: 100px;
+}
+
+.card__badge--green { background-color: var(--color-whatsapp-dark); }
+
+.card__body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.card__desc {
+  font-size: .9rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+.card__link {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.card__link:hover {
+  color: var(--color-accent);
+}
+
+
+/* ====================================================
+   8. SECCIÓN HISTORIA / TRADICIÓN
+   ==================================================== */
+.historia {
+  background-color: var(--color-bg-alt);
+}
+
+.historia__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.historia__img-wrapper {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.historia__img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.historia__text {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.historia__text .section__tag {
+  align-self: flex-start;
+}
+
+.historia__text .section__title {
+  text-align: left;
+  margin-bottom: .25rem;
+}
+
+.historia__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 1.1rem;
+  margin-block: .75rem;
+  line-height: 1.5;
+}
+
+.historia__text p {
+  font-size: .93rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+.historia__text p strong {
+  color: var(--color-text);
+}
+
+.historia__values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.historia__value {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  padding: .6rem .85rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.historia__value-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+
+/* ====================================================
+   9. CONTACTO Y UBICACIÓN
+   ==================================================== */
+.contact { background-color: var(--color-bg); }
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.contact__map iframe {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+}
+
+.contact__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+.contact__item strong {
+  display: block;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: .3rem;
+  font-size: .92rem;
+}
+
+.contact__item p,
+.contact__item ul {
+  font-size: .9rem;
+  color: var(--color-text-light);
+}
+
+/* Tabla de horarios */
+.horarios {
+  border: 1px solid var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+.horarios__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem .75rem;
+  font-size: .84rem;
+  gap: .75rem;
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+
+.horarios__item:last-child { border-bottom: none; }
+
+.horarios__item--closed {
+  background-color: rgba(139, 47, 26, .04);
+}
+
+.cerrado {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: .82rem;
+}
+
+.contact__link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact__link:hover { color: var(--color-accent); }
+
+.contact__link--whatsapp { color: var(--color-whatsapp-dark); }
+
+
+/* ====================================================
+   10. RECETAS PREVIEW
+   ==================================================== */
+.recetas-preview { background-color: var(--color-bg-alt); }
+
+.recetas-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.receta-preview {
+  display: block;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+}
+
+.receta-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.receta-preview__img-wrapper { overflow: hidden; }
+
+.receta-preview__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.receta-preview:hover .receta-preview__img { transform: scale(1.04); }
+
+.receta-preview__body {
+  padding: 1.25rem;
+}
+
+.receta-preview__tag {
+  display: inline-block;
+  background-color: rgba(139, 47, 26, .08);
+  color: var(--color-primary);
+  font-size: .70rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .25rem .65rem;
+  border-radius: 100px;
+  margin-bottom: .6rem;
+}
+
+.receta-preview__title {
+  font-family: var(--font-display);
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: .5rem;
+  line-height: 1.35;
+}
+
+.receta-preview__excerpt {
+  font-size: .88rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: .75rem;
+}
+
+.receta-preview__cta {
+  display: inline-block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.receta-preview:hover .receta-preview__cta {
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+
+/* ====================================================
+   11. FOOTER
+   ==================================================== */
+.footer {
+  background-color: #2c1810;
+  color: rgba(255, 255, 255, .78);
+  padding: 3rem 0 1.5rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer__logo {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .7rem;
+}
+
+.footer__brand p,
+.footer__links li,
+.footer__contact p {
+  font-size: .87rem;
+  line-height: 1.9;
+}
+
+.footer__links h4,
+.footer__contact h4 {
+  font-family: var(--font-display);
+  font-size: .92rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+
+.footer__links a,
+.footer__contact a {
+  color: rgba(255, 255, 255, .70);
+}
+
+.footer__links a:hover,
+.footer__contact a:hover { color: var(--color-secondary); }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, .10);
+  padding-top: 1.25rem;
+  text-align: center;
+  font-size: .78rem;
+  color: rgba(255, 255, 255, .40);
+}
+
+
+/* ====================================================
+   12. BOTÓN FLOTANTE WHATSAPP
+   ==================================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, .50);
+  transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+  animation: pulse-whatsapp 2.8s infinite;
+}
+
+.whatsapp-float:hover {
+  background-color: var(--color-whatsapp-dark);
+  transform: scale(1.10);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, .60);
+}
+
+/* Tooltip al hacer hover */
+.whatsapp-float__tooltip {
+  position: absolute;
+  right: 70px;
+  background-color: #333;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .35rem .75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.whatsapp-float__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #333;
+}
+
+.whatsapp-float:hover .whatsapp-float__tooltip { opacity: 1; }
+
+@keyframes pulse-whatsapp {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, .50); }
+  50%       { box-shadow: 0 4px 35px rgba(37, 211, 102, .80), 0 0 0 10px rgba(37, 211, 102, .12); }
+}
+
+
+/* ====================================================
+   13. ANIMACIONES FADE-IN
+   (activadas via JS con IntersectionObserver)
+   ==================================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ====================================================
+   14. MEDIA QUERIES
+   ==================================================== */
+
+/* --- Tablet: 640 px y más --- */
+@media (min-width: 640px) {
+
+  .section__title { font-size: 2rem; }
+
+  .hero__title    { font-size: 2.8rem; }
+  .hero__actions  { flex-direction: row; }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recetas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Desktop: 1024 px y más --- */
+@media (min-width: 1024px) {
+
+  :root {
+    --section-pad:  6rem 0;
+    --container-px: 2rem;
+  }
+
+  /* Ocultar hamburguesa y mostrar nav horizontal */
+  .nav__toggle { display: none; }
+
+  .nav__list {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: none;
+    padding: 0;
+    gap: 0;
+    box-shadow: none;
+    align-items: center;
+  }
+
+  .nav__link {
+    padding: .5rem .85rem;
+    border-bottom: none;
+    font-size: .88rem;
+  }
+
+  .nav__call {
+    margin-top: 0;
+    width: auto;
+    margin-left: .5rem;
+  }
+
+  .hero__title    { font-size: 3.5rem; }
+
+  .cards-grid     { grid-template-columns: repeat(4, 1fr); }
+
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .contact__map iframe {
+    height: 100%;
+    min-height: 420px;
+  }
+
+  /* Historia: layout lado a lado */
+  .historia__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+
+  .historia__img {
+    height: 100%;
+    min-height: 400px;
+  }
+
+  /* Recetas: 3 columnas en desktop */
+  .recetas-grid   { grid-template-columns: repeat(3, 1fr); }
+
+  .section__title { font-size: 2.25rem; }
+}
+
+/* --- Large Desktop: 1280 px y más --- */
+@media (min-width: 1280px) {
+  .hero__title { font-size: 4rem; }
+}
+
+
+/* ====================================================
+   ESTILOS COMPARTIDOS PARA PÁGINAS DE RECETAS
+   (pastas.html, minutas.html, pizzas-empanadas.html)
+   ==================================================== */
+.recipe-page-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.recipe-page-hero .hero__overlay {
+  background: linear-gradient(
+    150deg,
+    rgba(44, 34, 24, .90) 0%,
+    rgba(139, 47, 26, .55) 50%,
+    rgba(44, 34, 24, .80) 100%
+  );
+}
+
+.recipe-page-hero .hero__content {
+  padding-block: 2.5rem;
+}
+
+.recipe-page-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+
+.recipe-page-hero p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 1rem 0;
+  font-size: .83rem;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+/* Receta desplegable con <details> */
+.recipe__toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: .4rem 0;
+  user-select: none;
+  list-style: none;
+}
+
+.recipe__toggle::-webkit-details-marker { display: none; }
+
+.recipe__toggle::before {
+  content: '▶';
+  font-size: .60rem;
+  transition: transform .2s ease;
+  display: inline-block;
+}
+
+details[open] > .recipe__toggle::before { transform: rotate(90deg); }
+
+.recipe__content {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  font-size: .88rem;
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+.recipe__content h4 {
+  font-family: var(--font-display);
+  font-size: .90rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: .8rem;
+  margin-bottom: .4rem;
+}
+
+.recipe__content h4:first-child { margin-top: 0; }
+
+.recipe__content ul,
+.recipe__content ol {
+  padding-left: 1.3rem;
+  margin-bottom: .5rem;
+}
+
+.recipe__content ul { list-style: disc; }
+.recipe__content ol { list-style: decimal; }
+
+.recipe__content li { margin-bottom: .3rem; }
+
+.recipe__tip {
+  margin-top: .75rem;
+  padding: .7rem .9rem;
+  background-color: rgba(37, 211, 102, .08);
+  border-left: 3px solid var(--color-whatsapp);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+/* Blog cards para las páginas de recetas */
+.blog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.blog-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-card__img-wrapper { overflow: hidden; }
+
+.blog-card__img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.blog-card:hover .blog-card__img { transform: scale(1.04); }
+
+.blog-card__body { padding: 1.25rem; }
+
+.blog-card__tag {
+  display: inline-block;
+  background-color: rgba(139, 47, 26, .08);
+  color: var(--color-primary);
+  font-size: .70rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .25rem .65rem;
+  border-radius: 100px;
+  margin-bottom: .6rem;
+}
+
+.blog-card__title {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: .5rem;
+  line-height: 1.35;
+}
+
+.blog-card__excerpt {
+  font-size: .88rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .blog__grid { grid-template-columns: repeat(2, 1fr); }
+  .recipe-page-hero h1 { font-size: 2.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .recipe-page-hero h1 { font-size: 3rem; }
+}
