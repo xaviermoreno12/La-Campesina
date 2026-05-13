@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Campesina — Rotisería artesanal en Necochea. Pastas caseras, minutas, pizzas y empanadas. Reservá mesa o pedí para llevar por WhatsApp.">
+  <meta name="theme-color" content="#5C1525">
+  <title>La Campesina — Rotisería · Necochea</title>
+  <style>
+    @font-face { font-family: 'Lora'; src: url('../fonts/lora-regular.ttf'); font-weight: 400; }
+    @font-face { font-family: 'Lora'; src: url('../fonts/lora-semibold.ttf'); font-weight: 600; }
+    @font-face { font-family: 'Lora'; src: url('../fonts/lora-bold.ttf'); font-weight: 700; }
+    @font-face { font-family: 'Lora'; src: url('../fonts/lora-italic.ttf'); font-style: italic; }
+    @font-face { font-family: 'DM Sans'; src: url('../fonts/dmsans-regular.ttf'); font-weight: 400; }
+    @font-face { font-family: 'DM Sans'; src: url('../fonts/dmsans-medium.ttf'); font-weight: 500; }
+    @font-face { font-family: 'DM Sans'; src: url('../fonts/dmsans-bold.ttf'); font-weight: 700; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bordo: #5C1525;
+      --bordo-dark: #3D0C18;
+      --bordo-light: #7A2038;
+      --gold: #C8881A;
+      --gold-light: #E4A832;
+      --cream: #FFF8EF;
+      --cream-dark: #F5EDE0;
+      --text: #2C1508;
+      --text-muted: #6B4C3B;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', Georgia, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(92, 21, 37, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .header-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header-logo span {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+
+    .header-cta {
+      background: var(--gold);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background: var(--gold-light); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../fotos/adentro.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45) saturate(0.8);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(61,12,24,0.3) 0%, rgba(61,12,24,0.7) 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 520px; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 8vw, 3.6rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 32px;
+      border: 2px solid rgba(255,255,255,0.5);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.5);
+      border-bottom: 2px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg);
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(4px); } }
+
+    /* ── BENEFITS STRIP ─────────────────────────────── */
+    .benefits {
+      background: var(--bordo);
+      padding: 32px 20px;
+    }
+
+    .benefits-grid {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .benefit-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(200,136,26,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .benefit-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    /* ── SECTION COMMONS ────────────────────────────── */
+    section { padding: 60px 20px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      color: var(--bordo-dark);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    /* ── MENU SECTION ────────────────────────────────── */
+    .menu-section { background: var(--cream); }
+    .menu-inner { max-width: 800px; margin: 0 auto; }
+
+    .menu-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 24px;
+      border: 2px solid var(--cream-dark);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--bordo);
+      border-color: var(--bordo);
+      color: var(--white);
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .menu-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(44,21,8,0.06);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .menu-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(44,21,8,0.1); }
+
+    .menu-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--cream-dark), var(--bordo-light));
+    }
+
+    .menu-card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, #e8d5c0 100%);
+    }
+
+    .menu-card-body { padding: 14px; }
+
+    .menu-card-name {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--bordo-dark);
+      margin-bottom: 4px;
+    }
+
+    .menu-card-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .btn-consultar {
+      display: inline-block;
+      padding: 7px 16px;
+      background: var(--cream-dark);
+      color: var(--bordo);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-consultar:hover { background: var(--bordo); color: var(--white); }
+
+    /* ── HORARIOS ────────────────────────────────────── */
+    .horarios-section { background: var(--bordo-dark); color: var(--white); }
+    .horarios-inner { max-width: 500px; margin: 0 auto; }
+
+    .horarios-section .section-title { color: var(--white); }
+    .horarios-section .section-label { color: var(--gold-light); }
+
+    .horario-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+
+    .horario-table tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .horario-table tr:last-child { border-bottom: none; }
+
+    .horario-table td {
+      padding: 10px 0;
+      font-size: 0.9rem;
+    }
+
+    .horario-table td:first-child {
+      font-weight: 600;
+      color: var(--gold-light);
+      width: 110px;
+    }
+
+    .horario-table td:last-child { color: rgba(255,255,255,0.85); }
+
+    .cerrado { color: rgba(255,255,255,0.35) !important; font-style: italic; }
+
+    /* ── COMO PEDIR ─────────────────────────────────── */
+    .como-section { background: var(--cream-dark); }
+    .como-inner { max-width: 700px; margin: 0 auto; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .step {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px 16px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(44,21,8,0.06);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--bordo);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 auto 14px;
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--bordo-dark);
+      margin-bottom: 6px;
+    }
+
+    .step-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── PEDIDOS SECTION ─────────────────────────────── */
+    .pedidos-section {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pedidos-section::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(200,136,26,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pedidos-inner { max-width: 520px; margin: 0 auto; position: relative; }
+
+    .pedidos-tabs {
+      display: flex;
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+
+    .pedidos-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .pedidos-tab.active {
+      background: var(--bordo);
+      color: var(--white);
+    }
+
+    .pedidos-form { display: none; }
+    .pedidos-form.active { display: flex; flex-direction: column; gap: 14px; }
+
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+
+    .form-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      padding: 12px 14px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.15s;
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--bordo-light);
+    }
+
+    .form-textarea { min-height: 80px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-wsp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--white);
+      padding: 16px;
+      border-radius: 32px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 4px;
+    }
+
+    .btn-wsp:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,211,102,0.4); }
+
+    .wsp-icon {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
+
+    .form-note {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--bordo-dark);
+      color: rgba(255,255,255,0.8);
+      padding: 40px 20px 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .footer-info a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .footer-info a:hover { color: var(--gold-light); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+    }
+
+    /* ── WHATSAPP FLOAT ──────────────────────────────── */
+    .wsp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+
+    .wsp-float:hover { transform: scale(1.1); }
+    .wsp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 500px) {
+      .benefits-grid { grid-template-columns: 1fr; gap: 16px; text-align: left; }
+      .benefit-item { flex-direction: row; gap: 12px; }
+      .menu-panel.active { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ──────────────────────────────────────── -->
+  <header class="site-header">
+    <a href="#top" class="header-logo">
+      <img src="../fotos/logo.jpg" alt="La Campesina" onerror="this.style.display='none'">
+      <span>La Campesina</span>
+    </a>
+    <a href="#pedidos" class="header-cta">Pedir ahora</a>
+  </header>
+
+  <!-- ── HERO ────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🍝 Rotisería · Necochea</div>
+      <h1>Comida casera <em>de verdad</em></h1>
+      <p class="hero-sub">Pastas artesanales, minutas y empanadas.<br>Menú del día al mediodía y a la noche.</p>
+      <div class="hero-actions">
+        <a href="#pedidos" class="btn-primary">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.52 5.857L0 24l6.334-1.497A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.367l-.357-.213-3.76.888.937-3.658-.233-.376A9.786 9.786 0 012.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+          Reservar mesa
+        </a>
+        <a href="#menu" class="btn-secondary">
+          Ver el menú
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ── BENEFITS STRIP ──────────────────────────────── -->
+  <div class="benefits">
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">🍝</div>
+        <span class="benefit-label">Pasta<br>artesanal</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🛵</div>
+        <span class="benefit-label">Delivery y<br>retiro en local</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💬</div>
+        <span class="benefit-label">Reservá por<br>WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MENÚ ────────────────────────────────────────── -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner">
+      <p class="section-label">Nuestro menú</p>
+      <h2 class="section-title">Hecho con ingredientes frescos,<br>todos los días</h2>
+      <p class="section-sub">Cada plato lo preparamos nosotros. Sin conservantes, sin congelado.</p>
+
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="showTab('pastas')">🍝 Pastas</button>
+        <button class="tab-btn" onclick="showTab('minutas')">🥩 Minutas</button>
+        <button class="tab-btn" onclick="showTab('pizzas')">🍕 Pizzas</button>
+        <button class="tab-btn" onclick="showTab('menu-dia')">🍽️ Menú del día</button>
+      </div>
+
+      <div class="menu-panel active" id="tab-pastas">
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_1.png" alt="Sorrentinos" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🥟</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Sorrentinos</p>
+            <p class="menu-card-desc">Rellenos de ricota y jamón, de espinaca o de queso. Caseros, siempre.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_2.png" alt="Ravioles" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🍜</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Ravioles</p>
+            <p class="menu-card-desc">Masa fina, relleno generoso. Con salsa fileto o a elección.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img-placeholder">🍝</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Fideos caseros</p>
+            <p class="menu-card-desc">Tallarines, ñoquis o cintas. Acompañados de la salsa que más te guste.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_3.png" alt="Canelones" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🫙</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Canelones</p>
+            <p class="menu-card-desc">Rellenos de carne, ricota o verdura. Gratinados al horno.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="tab-minutas">
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_4.png" alt="Milanesas" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🥩</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Milanesas</p>
+            <p class="menu-card-desc">De ternera o de pollo, napolitana o clásica. Con guarnición a elección.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img-placeholder">🍗</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Pollo al horno</p>
+            <p class="menu-card-desc">Entero o en presas, con papas o arroz. Cocinado al momento.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_5.png" alt="Tarta" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🥧</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Tartas</p>
+            <p class="menu-card-desc">De verdura, jamón y queso, o mixtas. Tapa y contratapa, caseras.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img-placeholder">🥩</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Bifes</p>
+            <p class="menu-card-desc">A la plancha o a la criolla. Tiernos, bien sazonados, con papas fritas.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="tab-pizzas">
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_6.png" alt="Pizza" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🍕</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Pizzas enteras</p>
+            <p class="menu-card-desc">Masa fina o gruesa, mozzarella, fugazzeta y especiales del día.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_7.png" alt="Empanadas al horno" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🥟</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Empanadas al horno</p>
+            <p class="menu-card-desc">Carne cortada a cuchillo, humita, jamón y queso, o caprese.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img-placeholder">🔥</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Empanadas fritas</p>
+            <p class="menu-card-desc">Crocantes, calientes, rellenas de carne o queso. De docena o media.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar precio</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_8.png" alt="Especialidad" onerror="this.outerHTML='<div class=menu-card-img-placeholder>⭐</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Especial del día</p>
+            <p class="menu-card-desc">Cada día tenemos una pizza o empanada especial. Consultá cuál es hoy.</p>
+            <a href="#pedidos" class="btn-consultar">Consultar hoy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="tab-menu-dia">
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_9.png" alt="Almuerzo" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🌞</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Menú del almuerzo</p>
+            <p class="menu-card-desc">Entrada + plato principal + postre. De mar. a dom. de 11:30 a 14:30.</p>
+            <a href="#pedidos" class="btn-consultar">Consultá el menú</a>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="../fotos/Screenshot_10.png" alt="Cena" onerror="this.outerHTML='<div class=menu-card-img-placeholder>🌙</div>'">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Menú de la cena</p>
+            <p class="menu-card-desc">Entrada + plato + bebida. De mar. a dom. de 19:30 a cierre.</p>
+            <a href="#pedidos" class="btn-consultar">Consultá el menú</a>
+          </div>
+        </div>
+        <div class="menu-card" style="grid-column: 1 / -1;">
+          <div style="padding: 20px; display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #5C1525 0%, #7A2038 100%); border-radius: 14px;">
+            <div style="font-size: 2rem; flex-shrink: 0;">📱</div>
+            <div>
+              <p style="font-family: 'Lora', serif; font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 4px;">¿Qué hay hoy?</p>
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.75); margin-bottom: 10px;">El menú cambia todos los días. Mandanos un mensaje para saber las opciones de hoy.</p>
+              <a href="https://wa.me/5492262544464?text=Hola%20La%20Campesina%2C%20%C2%BFcu%C3%A1l%20es%20el%20men%C3%BA%20del%20d%C3%ADa%20de%20hoy%3F" target="_blank" style="display: inline-block; background: #25D366; color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-decoration: none;">Ver menú de hoy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── HORARIOS ─────────────────────────────────────── -->
+  <section class="horarios-section">
+    <div class="horarios-inner">
+      <p class="section-label">Cuándo encontrarnos</p>
+      <h2 class="section-title">Horarios de atención</h2>
+      <table class="horario-table">
+        <tr><td>Lunes</td><td class="cerrado">Cerrado</td></tr>
+        <tr><td>Martes</td><td>11:30–14:30 · 19:30–22:30</td></tr>
+        <tr><td>Miércoles</td><td>11:30–14:30 · 19:30–22:30</td></tr>
+        <tr><td>Jueves</td><td>11:30–14:30 · 19:30–22:30</td></tr>
+        <tr><td>Viernes</td><td>11:30–14:30 · 19:30–22:30</td></tr>
+        <tr><td>Sábado</td><td>11:30–14:30 · 19:30–23:00</td></tr>
+        <tr><td>Domingo</td><td>11:30–14:30 · 19:30–23:00</td></tr>
+      </table>
+      <div style="margin-top: 24px; padding: 14px; background: rgba(200,136,26,0.15); border-radius: 10px; border-left: 3px solid var(--gold);">
+        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.8);">📍 Calle 66 esq. 61, Necochea · Tel: 02262 436872</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CÓMO PEDIR ───────────────────────────────────── -->
+  <section class="como-section">
+    <div class="como-inner">
+      <p class="section-label">¿Cómo funciona?</p>
+      <h2 class="section-title">Pedir es muy fácil</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <p class="step-title">Elegís lo que querés</p>
+          <p class="step-desc">Revisá el menú y anotá tu pedido o reserva.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <p class="step-title">Mandás WhatsApp</p>
+          <p class="step-desc">Completás el formulario y lo enviamos por WhatsApp al instante.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <p class="step-desc">Te avisamos cuando está listo. Venís a buscarlo o lo llevamos nosotros.</p>
+          <p class="step-title">Lo disfrutás</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PEDIDOS / RESERVAS ───────────────────────────── -->
+  <section class="pedidos-section" id="pedidos">
+    <div class="pedidos-inner">
+      <p class="section-label">Hacé tu pedido</p>
+      <h2 class="section-title">Reservá o pedí<br>para llevar</h2>
+      <p class="section-sub">Te respondemos rápido por WhatsApp.</p>
+
+      <div class="pedidos-tabs">
+        <button class="pedidos-tab active" onclick="showPedido('reserva')">🍽️ Reservar mesa</button>
+        <button class="pedidos-tab" onclick="showPedido('delivery')">🛵 Para llevar / Delivery</button>
+      </div>
+
+      <!-- Formulario reserva -->
+      <form class="pedidos-form active" id="form-reserva" onsubmit="enviarReserva(event)">
+        <div class="form-field">
+          <label class="form-label" for="reserva-nombre">Tu nombre</label>
+          <input class="form-input" id="reserva-nombre" type="text" placeholder="Ej: María García" required>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="reserva-fecha">Fecha</label>
+            <input class="form-input" id="reserva-fecha" type="date" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="reserva-hora">Turno</label>
+            <select class="form-select" id="reserva-hora" required>
+              <option value="">Elegir...</option>
+              <option value="11:30">11:30 hs</option>
+              <option value="12:00">12:00 hs</option>
+              <option value="12:30">12:30 hs</option>
+              <option value="13:00">13:00 hs</option>
+              <option value="13:30">13:30 hs</option>
+              <option value="14:00">14:00 hs</option>
+              <option value="19:30">19:30 hs</option>
+              <option value="20:00">20:00 hs</option>
+              <option value="20:30">20:30 hs</option>
+              <option value="21:00">21:00 hs</option>
+              <option value="21:30">21:30 hs</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="reserva-personas">¿Cuántos son?</label>
+          <select class="form-select" id="reserva-personas" required>
+            <option value="">Elegir...</option>
+            <option value="1 persona">1 persona</option>
+            <option value="2 personas">2 personas</option>
+            <option value="3 personas">3 personas</option>
+            <option value="4 personas">4 personas</option>
+            <option value="5 o más">5 o más</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="reserva-nota">Algo más (opcional)</label>
+          <textarea class="form-textarea" id="reserva-nota" placeholder="Ej: cumpleaños, silla para bebé, alguna restricción alimentaria..."></textarea>
+        </div>
+        <button type="submit" class="btn-wsp">
+          <svg class="wsp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.52 5.857L0 24l6.334-1.497A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.367l-.357-.213-3.76.888.937-3.658-.233-.376A9.786 9.786 0 012.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+          Confirmar reserva por WhatsApp
+        </button>
+        <p class="form-note">Te vamos a confirmar la disponibilidad enseguida.</p>
+      </form>
+
+      <!-- Formulario delivery/takeout -->
+      <form class="pedidos-form" id="form-delivery" onsubmit="enviarDelivery(event)">
+        <div class="form-field">
+          <label class="form-label" for="del-nombre">Tu nombre</label>
+          <input class="form-input" id="del-nombre" type="text" placeholder="Ej: Carlos López" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="del-tipo">¿Cómo lo querés?</label>
+          <select class="form-select" id="del-tipo" required>
+            <option value="">Elegir...</option>
+            <option value="retiro en local">Retiro en local</option>
+            <option value="delivery a domicilio">Delivery a domicilio</option>
+          </select>
+        </div>
+        <div class="form-field" id="campo-direccion" style="display:none;">
+          <label class="form-label" for="del-direccion">Tu dirección</label>
+          <input class="form-input" id="del-direccion" type="text" placeholder="Ej: Calle 58 nro 2200, Necochea">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="del-pedido">¿Qué querés pedir?</label>
+          <textarea class="form-textarea" id="del-pedido" placeholder="Ej: 1 porción de sorrentinos con tuco, 2 empanadas de carne, 1 gaseosa..." required></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="del-hora">¿Para qué horario?</label>
+          <input class="form-input" id="del-hora" type="text" placeholder="Ej: hoy a las 13:00 hs">
+        </div>
+        <button type="submit" class="btn-wsp">
+          <svg class="wsp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.52 5.857L0 24l6.334-1.497A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.367l-.357-.213-3.76.888.937-3.658-.233-.376A9.786 9.786 0 012.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+          Enviar pedido por WhatsApp
+        </button>
+        <p class="form-note">Te confirmamos el tiempo estimado enseguida.</p>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────── -->
+  <footer>
+    <p class="footer-logo">La Campesina</p>
+    <p class="footer-tagline">Rotisería artesanal · Necochea</p>
+    <div class="footer-info">
+      <span>📍 Calle 66 esq. 61, Necochea</span>
+      <a href="tel:022624368720">📞 02262 436872</a>
+      <a href="https://wa.me/5492262544464">💬 WhatsApp: +54 9 2262 544464</a>
+    </div>
+    <p class="footer-copy">© 2025 La Campesina · Necochea, Buenos Aires, Argentina</p>
+  </footer>
+
+  <!-- ── WhatsApp flotante ─────────────────────────────── -->
+  <a href="https://wa.me/5492262544464?text=Hola%20La%20Campesina%2C%20quisiera%20hacer%20un%20pedido" target="_blank" class="wsp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.52 5.857L0 24l6.334-1.497A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.367l-.357-.213-3.76.888.937-3.658-.233-.376A9.786 9.786 0 012.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+  </a>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    function showPedido(id) {
+      document.querySelectorAll('.pedidos-form').forEach(f => f.classList.remove('active'));
+      document.querySelectorAll('.pedidos-tab').forEach(b => b.classList.remove('active'));
+      document.getElementById('form-' + id).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    document.getElementById('del-tipo').addEventListener('change', function() {
+      document.getElementById('campo-direccion').style.display =
+        this.value === 'delivery a domicilio' ? 'flex' : 'none';
+    });
+
+    function enviarReserva(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('reserva-nombre').value;
+      const fecha = document.getElementById('reserva-fecha').value;
+      const hora = document.getElementById('reserva-hora').value;
+      const personas = document.getElementById('reserva-personas').value;
+      const nota = document.getElementById('reserva-nota').value;
+
+      const formatFecha = fecha ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' }) : '';
+
+      let msg = `Hola La Campesina! Quisiera reservar una mesa:\n\n`;
+      msg += `👤 Nombre: ${nombre}\n`;
+      msg += `📅 Fecha: ${formatFecha}\n`;
+      msg += `🕐 Horario: ${hora} hs\n`;
+      msg += `👥 Personas: ${personas}\n`;
+      if (nota) msg += `📝 Nota: ${nota}\n`;
+
+      window.open('https://wa.me/5492262544464?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    function enviarDelivery(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('del-nombre').value;
+      const tipo = document.getElementById('del-tipo').value;
+      const dir = document.getElementById('del-direccion').value;
+      const pedido = document.getElementById('del-pedido').value;
+      const hora = document.getElementById('del-hora').value;
+
+      let msg = `Hola La Campesina! Quiero hacer un pedido:\n\n`;
+      msg += `👤 Nombre: ${nombre}\n`;
+      msg += `📦 Modalidad: ${tipo}\n`;
+      if (dir) msg += `📍 Dirección: ${dir}\n`;
+      msg += `🍽️ Pedido: ${pedido}\n`;
+      if (hora) msg += `⏰ Para: ${hora}\n`;
+
+      window.open('https://wa.me/5492262544464?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('reserva-fecha').min = today;
+  </script>
+</body>
+</html>

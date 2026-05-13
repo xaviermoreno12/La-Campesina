@@ -1,0 +1,176 @@
+PLAN: PUBLICIDAD DIGITAL — LA CAMPESINA (SER #1 EN NECOCHEA)
+=============================================================
+
+NEGOCIO
+Rotisería La Campesina — Calle 66 esq. 61, Necochea
+WhatsApp: +54 9 2262 544464 | Tel: 02262 436872
+Menú: pastas caseras, minutas, pizzas, empanadas, menú del día
+Horarios: Lunes cerrado · Mar-Vie 11:30-14:30 y 19:30-22:30 · Sáb-Dom 11:30-14:30 y 19:30-23:00
+
+===============================================================
+DECISIÓN: ¿MOSTRAR PRECIO EN LOS ADS?
+===============================================================
+
+NO mostrar precio exacto. Usar "Consultá el menú de hoy".
+
+- El menú del día cambia todos los días → precio fijo queda desactualizado
+- Sin precio: el anuncio dura semanas sin editar
+- Excepción válida: promo puntual ("Milanesa completa $X este finde")
+- En carrusel de productos: mostrar nombre del plato sin precio
+
+===============================================================
+DECISIÓN: ¿VIDEO SCROLL DEL SITIO FUNCIONA PARA ADS?
+===============================================================
+
+Sí, funciona muy bien — grabar pantalla del celular scrolleando la landing,
+15-20 segundos, con música de fondo (tango suave o folklore), termina en el
+botón de WhatsApp.
+Condición: la landing debe estar publicada con fotos reales de los platos.
+
+===============================================================
+PARTE 1: LANDING PAGE PÚBLICA
+===============================================================
+
+Archivo: la-campesina/landing/index.html
+Deploy:  GitHub Pages → xaviermoreno12.github.io/La-Campesina/landing
+
+Secciones:
+
+[HERO]
+  Logo + "La Campesina — Rotisería · Necochea"
+  Foto del local o platos
+  CTAs: "Reservar mesa" y "Pedir para llevar"
+
+[NOSOTROS]
+  3 íconos:
+  ✓ Pasta casera todos los días
+  ✓ Reserva en minutos por WhatsApp
+  ✓ Delivery y retiro en local
+
+[MENÚ]
+  Grid de cards por categoría:
+  - Pastas: Sorrentinos · Fideos caseros · Ravioles · Canelones
+  - Minutas: Milanesas · Bifes · Pollo al horno · Tarta
+  - Pizzas y Empanadas: Pizza entera · Empanadas al horno · Empanadas fritas
+  - Menú del día: Entrada + Principal + Postre
+  Cada card: nombre + descripción + "Consultar precio"
+
+[HORARIOS]
+  Tabla clara con días y horarios (Lunes cerrado)
+
+[CÓMO PEDIR]
+  3 pasos: Elegís el plato → Mandás WhatsApp → Lo retirás o te lo llevamos
+
+[PEDIDOS / RESERVAS]   ← acá aterriza el tráfico de los ads
+  Opción 1: Reserva mesa (nombre, fecha, hora, personas)
+  Opción 2: Pedido para llevar/delivery (nombre, dirección, qué querés)
+  Botón verde: "Enviar por WhatsApp" → wa.me/5492262544464 con mensaje pre-armado
+
+[FOOTER]
+  Dirección, teléfono, horarios, Instagram
+
+Técnico:
+- HTML puro + CSS inline, fuentes locales (Lora + DM Sans)
+- Paleta: bordó oscuro #5C1525 + crema #FFF8EF + dorado #C8881A
+- Diseñada para verse perfecta en mobile
+
+===============================================================
+PARTE 2: VIDEOS PARA FACEBOOK ADS
+===============================================================
+
+TIPO A — Video Scroll del Sitio (hacer primero)
+  - Grabar pantalla del cel scrolleando la landing
+  - 15-20 segundos
+  - Música: tango suave, folklore o cumbia tranquila
+  - Termina en el botón de WhatsApp con la sección de pedidos visible
+  - Formato: 9:16 vertical
+
+TIPO B — POV Videos (mayor impacto)
+
+  #  Escena                                                Copy
+  1  Sorrentinos caseros cayendo al plato humeante          "Hechos con amor, todos los días"
+  2  Llegás del trabajo y te traen la milanesa del día      "Comida casera sin cocinar"
+  3  Empanadas recién sacadas del horno, el domingo fam.    "El sabor de siempre"
+  4  Cortás una porción de pizza de La Campesina            "La pizza de Necochea"
+  5  El mensajero te trae el menú del día a la puerta       "A domicilio, calentito"
+
+  Producción: grabar con celular (más auténtico y rápido)
+
+===============================================================
+PARTE 3: FACEBOOK ADS — ESTRATEGIA COMPLETA
+===============================================================
+
+SEGMENTOS:
+
+  Familias           → 30-60, Necochea + 15km
+                       Intereses: cocina, recetas, hogar, familia
+                       (almuerzo y cena, llevan comida a casa)
+
+  Trabajadores       → 25-50, Necochea
+                       Intereses: comida, trabajo, delivery
+                       (menú del día, almuerzo rápido)
+
+  Parejas / salidas  → 22-45, Necochea
+                       Intereses: restaurantes, salidas, cenas
+                       (reservas de noche, fines de semana)
+
+  Retargeting        → Visitas a la landing (Pixel Facebook) — semana 2
+  Lookalike          → Similar a quienes hicieron clic en WhatsApp — semana 2+
+
+PASOS PARA CREAR LA CAMPAÑA:
+
+PASO 0 — Antes de empezar:
+  □ Página de Facebook de La Campesina activa
+  □ Business Manager en business.facebook.com
+  □ Landing publicada en GitHub Pages
+  □ Pixel de Facebook instalado en la landing
+
+PASO 1 — Crear campaña:
+  Objetivo: Click to WhatsApp (reservas + pedidos directos)
+  Nombre: "La Campesina — Rotisería Necochea"
+
+PASO 2 — Ad Set:
+  Presupuesto: $5-8 USD/día para empezar
+  Audiencia: Necochea + 15km, edad 22-60, solo mobile
+  Mayor intensidad: jueves + viernes + sábado (pico de reservas y pedidos)
+
+PASO 3 — Texto del anuncio:
+  "¿Buscás comida casera en Necochea? 🍝 Pastas, minutas, pizzas y empanadas.
+  Menú del día al mediodía y a la noche. Reservá o pedí para llevar por WhatsApp 👇"
+  CTA: "Enviar mensaje" → directo a WhatsApp
+  NO mencionar precio en el texto del anuncio
+
+PASO 4 — A/B test con 3 creativos:
+  1. Video scroll de la landing page
+  2. Foto del plato del día + texto de arriba
+  3. POV video sorrentinos o milanesa
+
+PASO 5 — Día 7:
+  Revisar CPM, CPC, CTR
+  Pausar el creativo con peor CTR
+  Duplicar el mejor y subir $3-5 USD/día
+
+PASO 6 — Semana 2: Retargeting
+  Visitas a la landing sin contacto → presupuesto $3 USD/día
+  "¿Todavía con hambre? Hoy tenemos [plato del día]. Pedí ahora 🍽️"
+
+===============================================================
+ORDEN DE EJECUCIÓN
+===============================================================
+
+1. Crear la-campesina/landing/index.html (6 secciones + form WhatsApp)
+2. Activar GitHub Pages (repo xaviermoreno12/La-Campesina, carpeta /landing)
+3. Instalar Pixel de Facebook en la landing
+4. Grabar video scroll del celular con la landing publicada
+5. Crear campaña Facebook Ads con los 3 creativos
+6. Monitorear 7 días → optimizar
+
+===============================================================
+VERIFICACIÓN
+===============================================================
+
+- Abrir landing en mobile → scroll limpio, sección pedidos visible al final
+- Tocar "Enviar por WhatsApp" → abre WhatsApp con mensaje pre-armado al 2262 544464
+- Pixel dispara en Meta Event Manager
+- Primer ad aprobado con impresiones activas
+- Semana 1: al menos 3 reservas/pedidos nuevos desde el link de la landing
